@@ -6,7 +6,9 @@ import RNPickerSelect from 'react-native-picker-select';
 import axios from 'axios';
 
 
+
 const API = "http://192.168.56.1:3000/api/customer/"
+
 function Profile({ navigation }) {
     const [name, setName] = useState('');
     const [money, setMoney] = useState(0);
@@ -23,8 +25,6 @@ function Profile({ navigation }) {
 
             if (response.data.success) {
                 const customerData = response.data.customer;
-
-
                 setMoney(customerData.money);
             } else {
                 console.error('Error fetching customer data:', response.data.message);
@@ -36,6 +36,7 @@ function Profile({ navigation }) {
             console.error('Error loading name from AsyncStorage:', error);
         }
     };
+
 
     useEffect(() => {
 
@@ -53,6 +54,7 @@ function Profile({ navigation }) {
         setModalVisible(!isModalVisible);
     };
     const handlePayment = async () => {
+
         try {
 
             const response = await axios.put(API + name, { money: parseFloat(money) + parseFloat(amount) });
@@ -69,7 +71,10 @@ function Profile({ navigation }) {
         } catch (error) {
             console.error('Error handling payment:', error);
         }
-    };
+
+    }
+
+
     return (
         <View style={{ width: '100%', height: 740 }}>
             <ScrollView>
@@ -131,7 +136,7 @@ function Profile({ navigation }) {
                                 onValueChange={(value) => setSelectedPaymentMethod(value)}
                                 items={[
                                     { label: 'Tiền mặt', value: 'Tiền mặt' },
-                                    { label: 'Thanh toán online', value: 'Thanh toán online' },
+                                    { label: 'ZaloPay', value: 'ZaloPay' },
                                 ]}
                             />
 

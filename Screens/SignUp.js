@@ -17,10 +17,7 @@ function SignUp({ navigation }) {
             ToastAndroid.show("Không được để trống", 2);
             return;
         }
-        else if (!phone.match("^\d{10}$")) { 
-            ToastAndroid.show("Số điện thoại phải là số và gồm 10 số", 2);
-            return;
-        }
+       
         else {
             try {
 

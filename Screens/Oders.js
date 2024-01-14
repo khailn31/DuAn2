@@ -36,6 +36,9 @@ function Orders() {
 
     return (
         <View>
+            <View style={{alignItems:"center"}}>
+                <Text style={{marginTop:10,fontSize:25,fontWeight:"bold",color:"black"}}>Lịch Sử Mua Hàng</Text>
+            </View>
             <FlatList
                 data={data}
                 keyExtractor={(item, index) => (item && item.id ? item.id.toString() : index.toString())}
